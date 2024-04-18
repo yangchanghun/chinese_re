@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Main Food</h1>
+    <div class="row">
+        {% for food in object_list %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <a href="{% url 'order:order_detail' pk=food.pk %}">
+                    <img src="{{ food.image_url }}" class="card-img-top" alt="{{ food.name }}">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{ food.name }}</h5>
+                    <p class="card-text">{{ food.description }}</p>
+                    <p class="card-text">Price: {{ food.price }}</p>
+                    <!-- 다른 음식 속성을 여기에 추가할 수 있습니다 -->
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
